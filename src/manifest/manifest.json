@@ -15,8 +15,8 @@
     "full": "Teams Meeting Custom Data"
   },
   "description": {
-    "short": "TODO: add short description here",
-    "full": "TODO: add full description here"
+    "short": "Displays custom data for the meeting",
+    "full": "Displays custom data for the meeting, both automatically created"
   },
   "icons": {
     "outline": "icon-outline.png",

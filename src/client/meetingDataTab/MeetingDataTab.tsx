@@ -38,8 +38,7 @@ export const MeetingDataTab = () => {
         resources: [`api://${process.env.PUBLIC_HOSTNAME}/${process.env.TAB_APP_ID}`],
         silent: false
       } as authentication.AuthTokenRequestParameters).then(token => {
-        const meetingID: string = '19:meeting_NWM3OTY5OTItOGY2NS00YzQ0LTlkZjgtZjMwNDc4NjUwMTAw@thread.v2';
-        // const meetingID: string = context?.meeting?.id ? context?.meeting?.id : '';
+        const meetingID: string = context?.meeting?.id ? context?.meeting?.id : '';
         loadCustomer(token, meetingID);
         app.notifySuccess();
       }).catch(message => {

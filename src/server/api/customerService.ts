@@ -11,8 +11,8 @@ export const customerService  = (options: any) =>  {
     // Set up the Bearer Strategy
   const bearerStrategy = new BearerStrategy({
     identityMetadata: "https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration",
-    clientID: process.env.TAB_APP_ID as string,
-    audience: `api://${process.env.PUBLIC_HOSTNAME}/${process.env.TAB_APP_ID}`,
+    clientID: process.env.MICROSOFT_APP_ID as string,
+    audience: `api://${process.env.PUBLIC_HOSTNAME}/${process.env.MICROSOFT_APP_ID}`,
     loggingLevel: "warn",
     validateIssuer: false,
     passReqToCallback: false

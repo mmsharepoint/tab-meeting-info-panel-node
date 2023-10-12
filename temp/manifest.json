@@ -6,17 +6,17 @@
   "packageName": "tabmeetingcreatedatanode",
   "developer": {
     "name": "Markus Moeller",
-    "websiteUrl": "https://e120-46-128-193-242.ngrok-free.app",
-    "privacyUrl": "https://e120-46-128-193-242.ngrok-free.app/privacy.html",
-    "termsOfUseUrl": "https://e120-46-128-193-242.ngrok-free.app/tou.html"
+    "websiteUrl": "https://mmotabmeetinginfopanelnode.azurewebsites.net",
+    "privacyUrl": "https://mmotabmeetinginfopanelnode.azurewebsites.net/privacy.html",
+    "termsOfUseUrl": "https://mmotabmeetinginfopanelnode.azurewebsites.net/tou.html"
   },
   "name": {
     "short": "Teams Meeting Custom Data",
     "full": "Teams Meeting Custom Data"
   },
   "description": {
-    "short": "TODO: add short description here",
-    "full": "TODO: add full description here"
+    "short": "Displays custom data for the meeting",
+    "full": "Displays custom data for the meeting, both automatically created"
   },
   "icons": {
     "outline": "icon-outline.png",
@@ -25,7 +25,7 @@
   "accentColor": "#D85028",
   "configurableTabs": [
     {
-      "configurationUrl": "https://e120-46-128-193-242.ngrok-free.app/meetingDataTab/config.html?name={loginHint}&tenant={tid}&group={groupId}&theme={theme}",
+      "configurationUrl": "https://mmotabmeetinginfopanelnode.azurewebsites.net/meetingDataTab/config.html?name={loginHint}&tenant={tid}&group={groupId}&theme={theme}",
       "canUpdateConfiguration": true,
       "scopes": [
         "groupchat"
@@ -49,12 +49,12 @@
     "messageTeamMembers"
   ],
   "validDomains": [
-    "e120-46-128-193-242.ngrok-free.app"
+    "mmotabmeetinginfopanelnode.azurewebsites.net"
   ],
   "showLoadingIndicator": false,
   "isFullScreen": false,
   "webApplicationInfo": {
     "id": "36e57ded-2d35-4080-908b-f5acc938eaf9",
-    "resource": "api://e120-46-128-193-242.ngrok-free.app/36e57ded-2d35-4080-908b-f5acc938eaf9"
+    "resource": "api://mmotabmeetinginfopanelnode.azurewebsites.net/36e57ded-2d35-4080-908b-f5acc938eaf9"
   }
 }

@@ -120,7 +120,7 @@ async function getMeetingChatId (client, userID, joinUrl) {
 
 async function getAppId (client) {
     const apps = await client.api('/appCatalogs/teamsApps')                
-                .filter("distributionMethod eq 'organization' and displayName eq 'TeamsMeetingServiceCall'")
+                .filter("distributionMethod eq 'organization' and displayName eq 'Teams Meeting Custom Data'")
                 .get();
 
     let appId = "";
@@ -146,10 +146,10 @@ async function installTabInChat(client, appId, chatId) {
         displayName: 'Custom Data',
         'teamsApp@odata.bind': `https://graph.microsoft.com/v1.0/appCatalogs/teamsApps/${appId}`,
         configuration: {
-            entityI: "2DCA2E6C7A10415CAF6B8AB6661B3154", // ToDo
-            contentUrl: "https://mmotabmeetingcreatedata.azurewebsites.net/tab",
-            removeUrl: "https://mmotabmeetingcreatedata.azurewebsites.net/uninstallTab",
-            websiteUrl: "https://mmotabmeetingcreatedata.azurewebsites.net"
+            entityId: "2DCA2E6C7A10415CAF6B8AB6661B3154", // ToDo
+            contentUrl: `https://${process.env.PUBLIC_HOSTNAME}/meetingDataTab/?name={loginHint}&tenant={tid}&group={groupId}&theme={theme}`,
+            removeUrl: `https://${process.env.PUBLIC_HOSTNAME}/meetingDataTab/remove.html?theme={theme}`,
+            websiteUrl: `https://${process.env.PUBLIC_HOSTNAME}/meetingDataTab/?name={loginHint}&tenant={tid}&group={groupId}&theme={theme}`
         }
       };
       
