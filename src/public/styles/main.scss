@@ -38,3 +38,22 @@ img.logo {
 	min-width: 76px;
 	height: auto;
 }
+
+.gridTable {
+	display: table;
+	max-width: 280px;
+}
+
+.gridRow {
+	display: table-row;
+}
+
+.gridCell3 {
+	display: table-cell;
+	width: 25%;
+}
+
+.gridCell9 {
+	display: table-cell;
+	width: 75%;
+}

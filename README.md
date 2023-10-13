@@ -7,7 +7,7 @@ This sample is a Microsoft Teams Tab displaying simple custom data in a meeting 
 
 High-level process
 
-![High-level process ...](assets/)
+![High-level process ...](assets/01HighlevelArc_CreateMeeting.png)
 
 In meeting side-panel display
 

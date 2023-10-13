@@ -7,10 +7,10 @@ const main = async () => {
     const userPrincipalName = process.env.MEETING_OWNER;
     const dummyAttendee = process.env.MEETING_ATTENDEE;
 
-    const meetingSubject = "Test Meeting with App / Tab Node";
+    const meetingSubject = "Test Meeting with App / Tab Node 2";
 
     const customerName = "Contoso";
-    const customerEmail = "JohnJohnson@contoso.com";
+    const customerEmail = "RichardRichardson@contoso.com";
     const customerPhone = "+491515445556";
     const customerId = "47110815";
 
@@ -31,7 +31,7 @@ const main = async () => {
         Email: customerEmail,
         Id: customerId
     }
-    azSvc.saveConfig(chatId, customer);
+    azSvc.saveAppConfig(chatId, customer);
     await azSvc.createCustomer(chatId, customer);
     const checkCustomer = await azSvc.getCustomer(chatId);
     console.log('Customer created in Azure Table');
