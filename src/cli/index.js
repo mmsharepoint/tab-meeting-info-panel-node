@@ -10,7 +10,7 @@ const main = async () => {
     const meetingSubject = "Test Meeting with App / Tab Node 2";
 
     const customerName = "Contoso";
-    const customerEmail = "RichardRichardson@contoso.com";
+    const customerEmail = "info@contoso.com";
     const customerPhone = "+491515445556";
     const customerId = "47110815";
 
