@@ -29,8 +29,10 @@ export const customerService  = (options: any) =>  {
       "/customer/:meetingID",
       async (req: any, res: express.Response, next: express.NextFunction) => {
           const meetingID: any = req.params.meetingID;
-          // const config: ICustomer = await retrieveConfig(meetingID);
-          const config: ICustomer = await getCustomer(meetingID);
+          const decodedMeetingId = Buffer.from(meetingID, 'base64').toString('ascii');
+          const plainChatId = decodedMeetingId.replace(/^0#|#0$/g, "");
+          // const config: ICustomer = await retrieveConfig(plainChatId);
+          const config: ICustomer = await getCustomer(plainChatId);
           res.json(config);
     });
     
