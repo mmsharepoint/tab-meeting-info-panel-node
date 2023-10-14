@@ -13,14 +13,16 @@ export const MeetingDataTab = () => {
 
   const [{ inTeams, theme, context }] = useTeams();
   const [entityId, setEntityId] = useState<string | undefined>();
+  const [meetingId, setMeetingId] = useState<string | undefined>();
+  const [token, setToken] = useState<string | undefined>();
   const [customer, setCustomer] = useState<ICustomer>();
   const [error, setError] = useState<string>();
 
-  const loadCustomer = (idToken: string, meetingID: string) => {
+  const loadCustomer = (meetingID: string) => {
     Axios.get(`https://${process.env.PUBLIC_HOSTNAME}/api/customer/${entityId}/${meetingID}`, {
                 responseType: "json",
                 headers: {
-                  Authorization: `Bearer ${idToken}`
+                  Authorization: `Bearer ${token}`
                 }
     }).then(result => {
       if (result.data) {
@@ -37,10 +39,10 @@ export const MeetingDataTab = () => {
       authentication.getAuthToken({
         resources: [`api://${process.env.PUBLIC_HOSTNAME}/${process.env.TAB_APP_ID}`],
         silent: false
-      } as authentication.AuthTokenRequestParameters).then(token => {
+      } as authentication.AuthTokenRequestParameters).then(bootstraptoken => {
+        setToken(bootstraptoken);
         const meetingID: string = context?.meeting?.id ? context?.meeting?.id : '';
-        setEntityId(context?.page.id); // EntityId = customerId
-        loadCustomer(token, meetingID);
+        setMeetingId(meetingID);               
         app.notifySuccess();
       }).catch(message => {
         setError(message);
@@ -54,6 +56,17 @@ export const MeetingDataTab = () => {
     }
   }, [inTeams]);
 
+  useEffect(() => {
+    if (context) {
+      setEntityId(context?.page.id); // EntityId = customerId
+    }
+  }, [context]);
+
+  useEffect(() => {
+    if (entityId && meetingId) {
+      loadCustomer(meetingId);
+    }
+  }, [entityId, meetingId]);
   /**
    * The render() method to create the UI of the tab
    */
