@@ -54,17 +54,16 @@ function getAZTableClient () {
     return tableClient;
 }
 
-async function getCustomer (meetingID) {
-    const tableClient = getAZTableClient();   
-    const customerEntities = await tableClient.listEntities({ disableTypeConversion: false, queryOptions: { filter: `PartitionKey eq '${meetingID}'`}})
-    const customerEntity = await customerEntities.next();
-    const customer = {
-        Name: customerEntity.value.Name,
-        Email: customerEntity.value.Email,
-        Phone: customerEntity.value.Phone,
-        Id: customerEntity.value.rowKey
-    }
-    return customer;
+async function getCustomer (customerID, meetingID) {
+  const tableClient = getAZTableClient();   
+  const customerEntity = await tableClient.getEntity(meetingID, customerID);  
+  const customer = {
+    Name: customerEntity.Name,
+    Email: customerEntity.Email,
+    Phone: customerEntity.Phone,
+    Id: customerEntity.rowKey
+  }
+  return customer;
 }
 
 exports.saveAppConfig = saveAppConfig;

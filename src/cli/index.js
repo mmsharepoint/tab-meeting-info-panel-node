@@ -24,7 +24,7 @@ const main = async () => {
     const appId = await graphSvc.getAppId(graphClient);
     console.log(appId);
     await graphSvc.installAppInChat(graphClient, appId, chatId);
-    await graphSvc.installTabInChat(graphClient, appId, chatId);
+    await graphSvc.installTabInChat(graphClient, appId, chatId, customerId);
     const customer = {
         Name: customerName,
         Phone: customerPhone,
@@ -33,7 +33,7 @@ const main = async () => {
     }
     azSvc.saveAppConfig(chatId, customer);
     await azSvc.createCustomer(chatId, customer);
-    const checkCustomer = await azSvc.getCustomer(chatId);
+    const checkCustomer = await azSvc.getCustomer(customerId, chatId);
     console.log('Customer created in Azure Table');
     console.log(checkCustomer);
 };

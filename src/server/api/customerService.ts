@@ -26,13 +26,14 @@ export const customerService  = (options: any) =>  {
   pass.use(bearerStrategy);
 
   router.get(
-      "/customer/:meetingID",
+      "/customer/:customerID/:meetingID",
       async (req: any, res: express.Response, next: express.NextFunction) => {
+          const customerID: any = req.params.customerID;
           const meetingID: any = req.params.meetingID;
           const decodedMeetingId = Buffer.from(meetingID, 'base64').toString('ascii');
           const plainChatId = decodedMeetingId.replace(/^0#|#0$/g, "");
           // const config: ICustomer = await retrieveConfig(plainChatId);
-          const config: ICustomer = await getCustomer(plainChatId);
+          const config: ICustomer = await getCustomer(customerID, plainChatId);
           res.json(config);
     });
     

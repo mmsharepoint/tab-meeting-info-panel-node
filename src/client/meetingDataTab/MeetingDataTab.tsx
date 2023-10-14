@@ -17,7 +17,7 @@ export const MeetingDataTab = () => {
   const [error, setError] = useState<string>();
 
   const loadCustomer = (idToken: string, meetingID: string) => {
-    Axios.get(`https://${process.env.PUBLIC_HOSTNAME}/api/customer/${meetingID}`, {
+    Axios.get(`https://${process.env.PUBLIC_HOSTNAME}/api/customer/${entityId}/${meetingID}`, {
                 responseType: "json",
                 headers: {
                   Authorization: `Bearer ${idToken}`
@@ -39,6 +39,7 @@ export const MeetingDataTab = () => {
         silent: false
       } as authentication.AuthTokenRequestParameters).then(token => {
         const meetingID: string = context?.meeting?.id ? context?.meeting?.id : '';
+        setEntityId(context?.page.id); // EntityId = customerId
         loadCustomer(token, meetingID);
         app.notifySuccess();
       }).catch(message => {

@@ -106,12 +106,12 @@ async function installAppInChat (client, appId, chatId) {
     return true;
 }
 
-async function installTabInChat(client, appId, chatId) {
+async function installTabInChat(client, appId, chatId, customerId) {
     const teamsTab = {
         displayName: 'Custom Data',
         'teamsApp@odata.bind': `https://graph.microsoft.com/v1.0/appCatalogs/teamsApps/${appId}`,
         configuration: {
-            entityId: "2DCA2E6C7A10415CAF6B8AB6661B3154", // ToDo
+            entityId: customerId,
             contentUrl: `https://${process.env.PUBLIC_HOSTNAME}/meetingDataTab/?name={loginHint}&tenant={tid}&group={groupId}&theme={theme}`,
             removeUrl: `https://${process.env.PUBLIC_HOSTNAME}/meetingDataTab/remove.html?theme={theme}`,
             websiteUrl: `https://${process.env.PUBLIC_HOSTNAME}/meetingDataTab/?name={loginHint}&tenant={tid}&group={groupId}&theme={theme}`
