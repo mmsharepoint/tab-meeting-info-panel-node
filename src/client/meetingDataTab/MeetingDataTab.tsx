@@ -41,8 +41,7 @@ export const MeetingDataTab = () => {
         silent: false
       } as authentication.AuthTokenRequestParameters).then(bootstraptoken => {
         setToken(bootstraptoken);
-        const meetingID: string = context?.meeting?.id ? context?.meeting?.id : '';
-        setMeetingId(meetingID);               
+                       
         app.notifySuccess();
       }).catch(message => {
         setError(message);
@@ -58,6 +57,8 @@ export const MeetingDataTab = () => {
 
   useEffect(() => {
     if (context) {
+      const meetingID: string = context?.meeting?.id ? context?.meeting?.id : '';
+      setMeetingId(meetingID);
       setEntityId(context?.page.id); // EntityId = customerId
     }
   }, [context]);
