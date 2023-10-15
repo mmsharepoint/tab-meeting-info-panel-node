@@ -18,8 +18,8 @@ export const MeetingDataTab = () => {
   const [customer, setCustomer] = useState<ICustomer>();
   const [error, setError] = useState<string>();
 
-  const loadCustomer = (meetingID: string) => {
-    Axios.get(`https://${process.env.PUBLIC_HOSTNAME}/api/customer/${entityId}/${meetingID}`, {
+  const loadCustomer = () => {
+    Axios.get(`https://${process.env.PUBLIC_HOSTNAME}/api/customer/${entityId}/${meetingId}`, {
                 responseType: "json",
                 headers: {
                   Authorization: `Bearer ${token}`
@@ -40,8 +40,7 @@ export const MeetingDataTab = () => {
         resources: [`api://${process.env.PUBLIC_HOSTNAME}/${process.env.TAB_APP_ID}`],
         silent: false
       } as authentication.AuthTokenRequestParameters).then(bootstraptoken => {
-        setToken(bootstraptoken);
-                       
+        setToken(bootstraptoken);                       
         app.notifySuccess();
       }).catch(message => {
         setError(message);
@@ -64,10 +63,10 @@ export const MeetingDataTab = () => {
   }, [context]);
 
   useEffect(() => {
-    if (entityId && meetingId) {
-      loadCustomer(meetingId);
+    if (entityId && meetingId && token) {
+      loadCustomer();
     }
-  }, [entityId, meetingId]);
+  }, [entityId, meetingId, token]);
   /**
    * The render() method to create the UI of the tab
    */

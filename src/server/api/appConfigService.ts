@@ -9,14 +9,14 @@ export const retrieveConfig = async (meetingID: string): Promise<ICustomer> => {
   let customerEmail  = "";
   let customerId  = "";
   try {
-    const movie1Setting = await client.getConfigurationSetting({ key: `TEAMSMEETINGSERVICECALL:${meetingID}:CUSTOMERNAME`});
-    customerName = movie1Setting.value!;
-    const movie2Setting = await client.getConfigurationSetting({ key: `TEAMSMEETINGSERVICECALL:${meetingID}:CUSTOMERPHONE`});
-    customerPhone = movie2Setting.value!;
-    const movie3Setting = await client.getConfigurationSetting({ key: `TEAMSMEETINGSERVICECALL:${meetingID}:CUSTOMEREMAIL`});
-    customerEmail = movie3Setting.value!;
-    const containerIdSetting = await client.getConfigurationSetting({ key: `TEAMSMEETINGSERVICECALL:${meetingID}:CUSTOMERID`});
-    customerId = containerIdSetting.value!;
+    const nameSetting = await client.getConfigurationSetting({ key: `TEAMSMEETINGSERVICECALL:${meetingID}:CUSTOMERNAME`});
+    customerName = nameSetting.value!;
+    const phoneSetting = await client.getConfigurationSetting({ key: `TEAMSMEETINGSERVICECALL:${meetingID}:CUSTOMERPHONE`});
+    customerPhone = phoneSetting.value!;
+    const emailSetting = await client.getConfigurationSetting({ key: `TEAMSMEETINGSERVICECALL:${meetingID}:CUSTOMEREMAIL`});
+    customerEmail = emailSetting.value!;
+    const idSetting = await client.getConfigurationSetting({ key: `TEAMSMEETINGSERVICECALL:${meetingID}:CUSTOMERID`});
+    customerId = idSetting.value!;
   }
   catch(error) {
     
