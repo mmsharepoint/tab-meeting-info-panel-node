@@ -9,6 +9,10 @@ High-level process
 
 ![High-level process ...](assets/01HighlevelArc_CreateMeeting.png)
 
+Run the console app (to create meeting, install app and write custom data)
+
+![Run the console app](assets/07TeamsMeeting_CreationResultNode.png)
+
 In meeting side-panel display
 
 ![In meeting side-panel display...](assets/06InMeetingSidePanel_yoteams.png)
@@ -44,19 +48,44 @@ Version|Date|Author|Comments
 
 ---
 
-## Debug and test locally
+## Minimal Path to Awesome
+- Clone the repository
+    ```bash
+    git clone https://github.com/mmsharepoint/tab-meeting-info-panel-node.git
+    ```
 
-To debug and test the solution locally you use the `serve` Gulp task. This will first build the app and then start a local web server on port 3007, where you can test your Tabs, Bots or other extensions. Also this command will rebuild the App if you change any file in the `/src` directory.
+- In a console, navigate to `/tab-meeting-info-panel-node`
 
-``` bash
-gulp serve
-```
+    ```bash
+    cd tab-meeting-info-panel-node
+    ```
 
-To debug the code you can append the argument `debug` to the `serve` command as follows. This allows you to step through your code using your preferred code editor.
+- Install modules
 
-``` bash
-gulp serve --debug
-```
+    ```bash
+    npm install
+    ```
+- Run ngrok in separate bash and note down the given url to .env
+    ```bash
+    gulp start-ngrok
+    ```
+
+- You will need to register an app in Azure AD [also described here](https://mmsharepoint.wordpress.com/2021/09/07/meeting-apps-in-microsoft-teams-1-pre-meeting/#appreg)
+  - with client secret
+  - with **application** Graph permissions AppCatalog.Read.All, Calendars.ReadWrite, TeamsAppInstallation.ReadWrite, OnlineMeetings.Read.All, TeamsTab.ReadWriteForChat.All
+  - With exposed Api "access_as_user" and App ID Uri api://{NGrok-Url}/{App ID}
+  - With the client IDs for Teams App and Teams Web App 1fec8e78-bce4-4aaf-ab1b-5451cc387264 and 5e3ce6c0-2b1f-4285-8d4b-75ee78787346
+- Also add the app ID and its secret to .env (taken from .env-sample) as TAB_APP_ID= and 
+    - add the secret to TAB_APP_SECRET=
+- Package the app
+    ```bash
+    gulp manifest
+    ```
+- Start the app
+    ```bash
+    gulp serve --debug
+    ```
+- Sideload the app in Teams
 
 
 ## Features
