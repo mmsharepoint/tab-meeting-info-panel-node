@@ -8,8 +8,8 @@ function getGraphClient () {
     // @azure/identity
     credential = new azure.ClientSecretCredential(
         process.env.TENANT_ID,
-        process.env.MICROSOFT_APP_ID,
-        process.env.MICROSOFT_APP_PASSWORD
+        process.env.TAB_APP_ID,
+        process.env.TAB_APP_SECRET
     );
     
     // @microsoft/microsoft-graph-client/authProviders/azureTokenCredentials

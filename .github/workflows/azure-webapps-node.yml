@@ -10,7 +10,7 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: '.'     # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '18.x'                # set this to the node version to use
   PUBLIC_HOSTNAME: ${{ secrets.PUBLIC_HOSTNAME }}
-  MICROSOFT_APP_ID: ${{ secrets.MICROSOFT_APP_ID }} # Bot's app ID
+  TAB_APP_ID: ${{ secrets.TAB_APP_ID }} # Bot's app ID
 
 jobs:
   build:
