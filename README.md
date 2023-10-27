@@ -17,7 +17,7 @@ In meeting side-panel display
 
 ![In meeting side-panel display...](assets/06InMeetingSidePanel_yoteams.png)
 
-For further details see the author's [blog post](https://mmsharepoint.wordpress.com/2023/10/)
+For further details see the author's [blog post](https://mmsharepoint.wordpress.com/2023/10/16/creating-teams-meetings-install-teams-meeting-app-and-use-custom-data-nodejs/)
 
 ## Tools and Frameworks
 
@@ -40,7 +40,7 @@ This sample was created [using the Yeoman Generator for Teams with Visual Studio
 
 Version|Date|Author|Comments
 -------|----|--------|--------
-1.0|Oct xx, 2023|[Markus Moeller](http://www.twitter.com/moeller2_0)|Initial release
+1.0|Oct 16, 2023|[Markus Moeller](http://www.twitter.com/moeller2_0)|Initial release
 
 ## Disclaimer
 
@@ -65,7 +65,7 @@ Version|Date|Author|Comments
     ```bash
     npm install
     ```
-- Run ngrok in separate bash and note down the given url to .env
+- Run ngrok in separate bash and note down the given url to .env (PUBLIC_HOSTNAME)
     ```bash
     gulp start-ngrok
     ```
@@ -85,7 +85,10 @@ Version|Date|Author|Comments
     ```bash
     gulp serve --debug
     ```
-- Sideload the app in Teams
+- Create a meeting in Teams via the console app
+    ```bash
+    node .
+    ```
 
 
 ## Features
